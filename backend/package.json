@@ -1,0 +1,16 @@
+{
+  "name": "hms-backend",
+  "version": "1.0.0",
+  "description": "This is backend of Hospital Management System created by AMMAR AHMAD & TAHA ATTIQUE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AMMAR AHMAD & TAHA ATTIQUE",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}

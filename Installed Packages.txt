@@ -1,0 +1,10 @@
+--------------------HMS Packages--------------------
+
+------Frontend-------
+1. Tailwind CSS
+
+------Backend--------
+1. Express
+2. Mongoose
+3. Cors
+4. Dot ENV
