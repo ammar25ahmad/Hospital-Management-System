@@ -8,3 +8,4 @@
 2. Mongoose
 3. Cors
 4. Dot ENV
+5. Body Parser
