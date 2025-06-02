@@ -9,3 +9,5 @@
 3. Cors
 4. Dot ENV
 5. Body Parser
+
+Command to install all Packages: npm i express mongoose cors body-parser dotenv
