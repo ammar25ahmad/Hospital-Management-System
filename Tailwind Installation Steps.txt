@@ -1,0 +1,19 @@
+--------------------Tailwind Installation Steps----------------------
+
+1. Run this Command:   npm install tailwindcss @tailwindcss/vite
+2. Replace this in vite.config.js file: 
+   import { defineConfig } from 'vite'
+   import react from '@vitejs/plugin-react'
+   import tailwindcss from '@tailwindcss/vite'
+   export default defineConfig({
+    plugins: [
+     react(),
+     //? Add the Tailwind CSS plugin her
+     tailwindcss(),
+    ],
+ })
+
+ 3. Paste this in index.css 
+ @import "tailwindcss";
+
+ And now start the server with "bun run dev"
