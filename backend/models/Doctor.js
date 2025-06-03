@@ -9,6 +9,11 @@ const doctorSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    cnic:{
+        type: Number,
+        required: true,
+        unique: true  // No two doctors can have same CNIC number
+    },
     gender:{
         type: String,
         required: true

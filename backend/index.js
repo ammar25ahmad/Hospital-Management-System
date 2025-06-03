@@ -45,6 +45,17 @@ connectToDatabase();
 app.get('/', async(req, res) => {
   res.send('Server is running')
 })
+app.post('/addDoctor', async(req, res ) => {
+  try {
+    const newDoctor = new Doctor(req.body);
+    await newDoctor.save()
+    res.status(200).send(newDoctor)
+  } catch (error) {
+    console.log(error + "Error in storing to Database")
+    res.status(500).send(error)
+  }
+  
+})
 
 // PORT LISTENING
 
