@@ -16,7 +16,7 @@ const Admindash = () => {
               <span className="mr-2">
                 <MdOutlineDashboard />
               </span>
-              <a href="">Dashboarda</a>
+              <a href="">Dashboard</a>
             </li>
             <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
               <span className="mr-2">
