@@ -31,4 +31,18 @@ const patientSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    email:{
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password:{
+        type: String,
+        required: true,
+        minLength: 8,
+        maxLength: 20,
+    }
 })
+
+const Patient = mongoose.model("Patient", patientSchema);
+module.exports = Patient;
