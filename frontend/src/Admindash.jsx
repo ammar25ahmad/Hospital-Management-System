@@ -99,7 +99,7 @@ const Admindash = () => {
                 </span>
               </div>
             </div>
-            <div className="bg-green-800 text-white p-4 rounded-lg shadow-lg">
+            <div className="bg-green-700 text-white p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold mb-2">Ali Ahmad</h2>
               <p>Emergency</p>
               <p>Sergimade Hospital</p>
