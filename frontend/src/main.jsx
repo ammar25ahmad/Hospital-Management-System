@@ -3,12 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Form from "./Form";
 import Admindash from "./Admindash";
-// import App from "./App.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <App /> */}
-    {/* <Form /> */}
+
+    <Form />
     <Admindash />
   </StrictMode>
 );

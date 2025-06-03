@@ -10,18 +10,22 @@ const doctorSchema = new mongoose.Schema({
         required: true
     },
     cnic:{
-        type: Number,
+        type: String,
         required: true,
-        unique: true  // No two doctors can have same CNIC number
+        unique: true, // No two doctors can have same CNIC number
+        minLength: 13,
+        maxLength: 13
     },
     gender:{
         type: String,
         required: true
     },
     phone:{
-        type: Number,
+        type: String,
         required: true,
-        unique: true  // No two doctors can have same phone number
+        unique: true,  // No two doctors can have same phone number
+        minLength: 10,
+        maxLength: 10,
     },
     email:{
         type: String,
