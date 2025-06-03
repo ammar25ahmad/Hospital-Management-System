@@ -110,6 +110,80 @@ const Admindash = () => {
               </div>
             </div>
           </div>
+          {/* Side wale Tables */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="bg-white p-4 rounded-lg shadow-lg">
+              <h3 className="text-xl font-bold mb-2"> Appointment</h3>
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-left border-b border-gray-200">
+                    <th className="pb-2">Name</th>
+                    <th className="pb-2">Date</th>
+                    <th className="pb-2">Time</th>
+                    <th className="pb-2">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/*1*/}
+                  <tr className="border-b">
+                    <td className="py-2 flex items-center">
+                      <span className="mr-2">
+                        <FaUser /> Qasim
+                      </span>
+                    </td>
+                    <td className="py-2">2022-03-01</td>
+                    <td className="py-2">10:00 AM</td>
+                    <td className="py-2">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                    </td>
+                  </tr>
+                  {/*2*/}
+                  <tr className="border-b">
+                    <td className="py-2 flex items-center">
+                      <span className="mr-2">
+                        <FaUser /> Qasim
+                      </span>
+                    </td>
+                    <td className="py-2">2022-03-01</td>
+                    <td className="py-2">10:00 AM</td>
+                    <td className="py-2">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                    </td>
+                  </tr>
+                  {/*3*/}
+                  <tr className="border-b">
+                    <td className="py-2 flex items-center">
+                      <span className="mr-2">
+                        <FaUser /> Qasim
+                      </span>
+                    </td>
+                    <td className="py-2">2022-03-01</td>
+                    <td className="py-2">10:00 AM</td>
+                    <td className="py-2">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                    </td>
+                  </tr>
+                  {/*4*/}
+                  <tr className="border-b">
+                    <td className="py-2 flex items-center">
+                      <span className="mr-2">
+                        <FaUser /> Qasim
+                      </span>
+                    </td>
+                    <td className="py-2">2022-03-01</td>
+                    <td className="py-2">10:00 AM</td>
+                    <td className="py-2">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </main>
       </div>
     </div>
