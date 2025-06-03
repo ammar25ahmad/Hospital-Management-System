@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FaUserDoctor } from "react-icons/fa6";
 import { CiMedicalCross } from "react-icons/ci";
@@ -19,13 +20,13 @@ const Admindash = () => {
               <span className="mr-2">
                 <MdOutlineDashboard />
               </span>
-              <a href="">Dashboard</a>
+              <Link to='/admin'>Dashboard</Link>
             </li>
             <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <FaUserDoctor />
               </span>
-              <a href="">Doctors</a>
+              <Link to="/admin/doctors">Doctors</Link>
             </li>
             <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
