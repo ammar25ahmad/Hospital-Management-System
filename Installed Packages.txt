@@ -1,7 +1,10 @@
 --------------------HMS Packages--------------------
 
 ------Frontend-------
-1. Tailwind CSS
+1. Tailwind CSS   //Separate file for tailwind commands (Tailwind Installation Steps.txt) 
+2. Axios
+
+command to Install all pacakages: bun i axios
 
 ------Backend--------
 1. Express
@@ -9,5 +12,9 @@
 3. Cors
 4. Dot ENV
 5. Body Parser
+6. BcryptJS
+7. JSON web Token
+8. Cookie Parser
 
-Command to install all Packages: npm i express mongoose cors body-parser dotenv
+
+Command to install all Packages: npm i express mongoose cors body-parser dotenv bcryptjs jsonwebtoken cookieparser

@@ -6,13 +6,14 @@ const cors = require('cors')  // For Cross Origin Communications means to send &
 const mongoose = require('mongoose'); // For connecting to Database
 require('dotenv').config()    // Package for importing variables from .env file
 
+
 // Importing Models
 const Doctor = require('./models/Doctor')
 
 // PORT Variable from .env file
 const PORT = process.env.PORT  
 // MongoURL Variable from .env file
-const MongoURL = process.env.MongoURL
+const Mongo_URL = process.env.MongoURL
 
 
 //  Body Parser Middleware for passing data in JSON format 
@@ -31,10 +32,10 @@ app.use(cors(corsOption))
 //  DataBase Connection
 async function connectToDatabase() {
   try {
-      await mongoose.connect(MongoURL);
+      await mongoose.connect(Mongo_URL);
       console.log('Connected to MongoDB');
   }catch(err){
-      console.log(err)
+      console.log(err + " (Error in Connecting to Database0")
   }
 }
 

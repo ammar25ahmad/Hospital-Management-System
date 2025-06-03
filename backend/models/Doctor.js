@@ -9,6 +9,15 @@ const doctorSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    gender:{
+        type: String,
+        required: true
+    },
+    phone:{
+        type: Number,
+        required: true,
+        unique: true  // No two doctors can have same phone number
+    },
     email:{
         type: String,
         required: true,
