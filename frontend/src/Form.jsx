@@ -9,7 +9,7 @@ function Form(){
         phone: '',
         cnic: '',
         age: '',
-        gender: 'male',
+        gender: '',
         department: '',
         password: '',
     })
@@ -57,7 +57,7 @@ const handleSubmit = async(e) => {
                 <select className='border border-2 border-cyan-400' onChange={handleChange} name="gender" id="gender" value={formData.gender}>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
-                    <option value="other">Prefer not to say</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
                 </select>
                 <br />
                 <br />
