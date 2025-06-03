@@ -3,6 +3,7 @@
 ------Frontend-------
 1. Tailwind CSS   //Separate file for tailwind commands (Tailwind Installation Steps.txt) 
 2. Axios
+3. react-icons
 
 command to Install all pacakages: bun i axios
 
