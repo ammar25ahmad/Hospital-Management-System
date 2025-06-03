@@ -12,40 +12,40 @@ const Admindash = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex">
-        <aside className="w-60 bg-orange-600 text-white p-4 h-screen">
+        <aside className="w-60 bg-green-600 text-white p-4 h-screen">
           <h1 className="text-2xl font-bold mb-4 text-center">Admin</h1>
           <ul>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <MdOutlineDashboard />
               </span>
               <a href="">Dashboard</a>
             </li>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <FaUserDoctor />
               </span>
               <a href="">Doctors</a>
             </li>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <FaUser />
               </span>
               <a href="">Patients</a>
             </li>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <CiMedicalCross />
               </span>
               <a href="">Medications</a>
             </li>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <FaRegNewspaper />
               </span>
               <a href="">News</a>
             </li>
-            <li className="mb-4 flex items-center bg-orange-700 rounded-lg p-2">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
               <span className="mr-2">
                 <CiLogout />
               </span>
@@ -99,7 +99,7 @@ const Admindash = () => {
                 </span>
               </div>
             </div>
-            <div className="bg-orange-500 text-white p-4 rounded-lg shadow-lg">
+            <div className="bg-green-800 text-white p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold mb-2">Ali Ahmad</h2>
               <p>Emergency</p>
               <p>Sergimade Hospital</p>
