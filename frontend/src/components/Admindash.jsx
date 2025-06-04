@@ -283,33 +283,6 @@ const Admindash = () => {
               </table>
             </div>
           </div>
-            {/* Existing dashboard content can be placed here and made dynamic */}
-            {/* For example, using dashboardData.newPatientsCount instead of static "10" */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <Link to='/admin/patients'>
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h2 className="text-xl font-bold mb-2">New Patients</h2>
-                {/* Example: Replace static number with dynamic data if available */}
-                <p className="text-gray-600">{dashboardData.newPatientsCount || 10}</p>
-              </div>
-            </Link>
-            <Link to='/admin/doctors'>
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h2 className="text-xl font-bold mb-2">Our Doctors</h2>
-                <p className="text-gray-600">{dashboardData.doctorsCount || 50}</p>
-              </div>
-            </Link>
-
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-2">Operations</h2>
-              <p className="text-gray-600">{dashboardData.operationsCount || 5}</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-2">Income</h2>
-              <p className="text-gray-600">{dashboardData.income || '1250000Rs.'}</p>
-            </div>
-          </div>
-          {/* Further content can be made dynamic similarly */}
             </>
           )}
         </main>
