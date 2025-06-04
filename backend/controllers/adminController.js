@@ -1,8 +1,6 @@
 const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
-// bcryptjs is removed as passwords will be stored in plaintext.
 require('dotenv').config();
-// Removed incorrect self-import of registerAdmin
 
 const secret = process.env.JWT_SECRET;
 
@@ -30,7 +28,7 @@ const loginAdmin = async (req, res) => {
             id: admin._id,
             email: admin.email,
             name: admin.name,
-            role: admin.role || 'admin', // Ensure role is included
+            role: admin.role || 'admin',  //Ensure role is included
         };
         const token = jwt.sign(payload, secret, { expiresIn: '1h' }); // Token expires in 1 hour
 

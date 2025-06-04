@@ -7,7 +7,7 @@ const verifyAdminToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (authHeader) {
-        const token = authHeader.split(' ')[1]; // Expects "Bearer <token>"
+        const token = authHeader.split('Bearer ')[1]; // Expects "Bearer <token>"
 
         if (!token) {
             // No token found after "Bearer "
