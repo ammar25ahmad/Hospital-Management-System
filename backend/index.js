@@ -51,5 +51,5 @@ app.use('/api/admin', adminRoute);
 // PORT LISTENING
 
 app.listen(PORT, () => {
-    console.log("Server Running on PORT 3000")
+    console.log(`Server Running on PORT ${PORT}`)
 })

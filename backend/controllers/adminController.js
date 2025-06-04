@@ -53,9 +53,19 @@ const loginAdmin = async (req, res) => {
 // Example protected route logic (can be expanded)
 const getAdminDashboard = (req, res) => {
     // req.admin is populated by the verifyAdminToken middleware
+    // In a real application, you would fetch this data from your database
+    const dashboardStats = {
+        newPatientsCount: 15, // Example data
+        doctorsCount: 48,     // Example data
+        operationsCount: 7,   // Example data
+        income: "1350000 Rs.", // Example data
+        // You can add more stats as needed
+    };
+
     res.json({
         message: `Welcome to the admin dashboard, ${req.admin.name || req.admin.email}!`,
-        admin: req.admin // Send back the admin data from token
+        admin: req.admin, // Send back the admin data from token
+        ...dashboardStats // Spread the dashboard stats into the response
     });
 };
 
