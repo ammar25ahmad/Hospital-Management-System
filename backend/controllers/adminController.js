@@ -94,7 +94,7 @@ const registerAdmin = async (req, res) => {
         });
 
         await admin.save();
-
+// check
         // Optionally, generate a token and log them in directly, or just send success
         // For simplicity, just sending success message for registration
         res.status(201).json({ message: 'Admin registered successfully.', adminId: admin._id });
