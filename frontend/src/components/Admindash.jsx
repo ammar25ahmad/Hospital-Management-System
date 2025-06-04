@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Router, Routes } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import { GiCrossMark } from "react-icons/gi";
@@ -11,7 +11,7 @@ const Admindash = () => {
     
         <main className="flex-1 p-4">
           <header className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">Hospital Dashboard</h1>
+            <h1 className="text-2xl text-blue-600 font-bold">Hospital Dashboard</h1>
             <div className="flex items-center">
               <span className="mr-2">
                 <FaUser />
@@ -21,14 +21,19 @@ const Admindash = () => {
           </header>
           {/* Cards Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-2">New Patients</h2>
-              <p className="text-gray-600">10</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-2">Our Doctors</h2>
-              <p className="text-gray-600">50</p>
-            </div>
+            <Link to='/admin/patients'>
+              <div className="bg-white rounded-lg shadow-lg p-6">
+                <h2 className="text-xl font-bold mb-2">New Patients</h2>
+                <p className="text-gray-600">10</p>
+              </div>
+            </Link>
+            <Link to='/admin/doctors'>
+              <div className="bg-white rounded-lg shadow-lg p-6">
+                <h2 className="text-xl font-bold mb-2">Our Doctors</h2>
+                <p className="text-gray-600">50</p>
+              </div>
+            </Link>
+
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-bold mb-2">Operations</h2>
               <p className="text-gray-600">5</p>
@@ -54,7 +59,7 @@ const Admindash = () => {
                 </span>
               </div>
             </div>
-            <div className="bg-green-700 text-white p-4 rounded-lg shadow-lg">
+            <div className="bg-blue-700 text-white p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold mb-2">Ali Ahmad</h2>
               <p>Emergency</p>
               <p>Sergimade Hospital</p>
@@ -92,7 +97,7 @@ const Admindash = () => {
                     <td className="py-2">2022-03-01</td>
                     <td className="py-2">10:00 AM</td>
                     <td className="py-2">
-                      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                         <TiTick />
                       </button>
                       <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
@@ -110,7 +115,7 @@ const Admindash = () => {
                     <td className="py-2">2022-03-01</td>
                     <td className="py-2">10:00 AM</td>
                     <td className="py-2">
-                      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                         <TiTick />
                       </button>
                       <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
@@ -128,7 +133,7 @@ const Admindash = () => {
                     <td className="py-2">2022-03-01</td>
                     <td className="py-2">10:00 AM</td>
                     <td className="py-2">
-                      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                         <TiTick />
                       </button>
                       <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
@@ -146,7 +151,7 @@ const Admindash = () => {
                     <td className="py-2">2022-03-01</td>
                     <td className="py-2">10:00 AM</td>
                     <td className="py-2">
-                      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                         <TiTick />
                       </button>
                       <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">

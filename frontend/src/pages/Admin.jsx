@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Admindash from "../components/Admindash";
 import AdminMenu from "../components/AdminMenu";
 import AdminDoctor from "../components/AdminDoctor";
+import AdminPatients from "../components/AdminPatients";
+import AdminMedications from "../components/AdminMedications";
+import AdminNews from "../components/AdminNews";
 
 
 function Admin() {
@@ -14,6 +17,9 @@ function Admin() {
                         <Routes>
                             <Route path='/' element={<Admindash />} />
                             <Route path='/doctors' element={<AdminDoctor />} />
+                            <Route path='/patients' element={<AdminPatients />} />
+                            <Route path='/medications' element={<AdminMedications />} />
+                            <Route path='/news' element={<AdminNews />} />
                         </Routes>
                 </div>
             </div>
