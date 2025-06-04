@@ -1,60 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { MdOutlineDashboard } from "react-icons/md";
-import { FaUserDoctor } from "react-icons/fa6";
-import { CiMedicalCross } from "react-icons/ci";
-import { CiLogout } from "react-icons/ci";
-import { FaRegNewspaper } from "react-icons/fa";
+import { BrowserRouter, Router, Routes } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import { GiCrossMark } from "react-icons/gi";
 
 const Admindash = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="flex">
-        <aside className="w-60 bg-green-600 text-white p-4 h-screen">
-          <h1 className="text-2xl font-bold mb-4 text-center">Admin</h1>
-          <ul>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <MdOutlineDashboard />
-              </span>
-              <Link to='/admin'>Dashboard</Link>
-            </li>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <FaUserDoctor />
-              </span>
-              <Link to="/admin/doctors">Doctors</Link>
-            </li>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <FaUser />
-              </span>
-              <a href="">Patients</a>
-            </li>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <CiMedicalCross />
-              </span>
-              <a href="">Medications</a>
-            </li>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <FaRegNewspaper />
-              </span>
-              <a href="">News</a>
-            </li>
-            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
-              <span className="mr-2">
-                <CiLogout />
-              </span>
-              <a href="">Logout</a>
-            </li>
-          </ul>
-        </aside>
-        {/* Main Content */}
+    <>
+
+    
         <main className="flex-1 p-4">
           <header className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold">Hospital Dashboard</h1>
@@ -264,8 +218,8 @@ const Admindash = () => {
             </div>
           </div>
         </main>
-      </div>
-    </div>
+    </>
+
   );
 };
 

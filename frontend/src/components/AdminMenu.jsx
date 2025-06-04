@@ -1,0 +1,60 @@
+import { BrowserRouter, Router, Routes, Link } from "react-router-dom";
+import React from "react";
+import { MdOutlineDashboard } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { FaUserDoctor } from "react-icons/fa6";
+import { CiMedicalCross } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
+import { FaRegNewspaper } from "react-icons/fa";
+
+function AdminMenu() {
+    return(
+        <aside className="w-60 bg-green-600 text-white p-4 h-screen">
+          <h1 className="text-2xl font-bold mb-4 text-center">Admin</h1>
+          <ul>
+          <Link to='/admin'>
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <MdOutlineDashboard />
+              </span>
+              Dashboard
+            </li>
+            </Link>
+            <Link to="/admin/doctors">
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <FaUserDoctor />
+              </span>
+              Doctors
+            </li>
+            </Link>
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <FaUser />
+              </span>
+              <a href="">Patients</a>
+            </li>
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <CiMedicalCross />
+              </span>
+              <a href="">Medications</a>
+            </li>
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <FaRegNewspaper />
+              </span>
+              <a href="">News</a>
+            </li>
+            <li className="mb-4 flex items-center bg-green-700 rounded-lg p-2">
+              <span className="mr-2">
+                <CiLogout />
+              </span>
+              <a href="">Logout</a>
+            </li>
+          </ul>
+        </aside>
+    )
+}
+
+export default AdminMenu
