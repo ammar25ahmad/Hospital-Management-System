@@ -4,9 +4,9 @@
 1. Tailwind CSS   //Separate file for tailwind commands (Tailwind Installation Steps.txt) 
 2. Axios
 3. React Icons
-4. React Router Dom    "bun i react-router-dom"
+4. React Router Dom   
 
-command to Install all pacakages: bun i axios react-icons
+command to Install all pacakages: bun i axios react-icons react-router-dom
 
 ------Backend--------
 1. Express

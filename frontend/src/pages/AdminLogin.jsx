@@ -48,7 +48,7 @@ function AdminLogin() {
         setEmail("");
         setPassword("");
         // Redirect to admin dashboard or another protected page
-        navigate("/admin/dashboard");
+        navigate("/admin");
       } else {
         setError(
           data.message || "Login failed. Please check your credentials."
