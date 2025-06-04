@@ -24,14 +24,8 @@ createRoot(document.getElementById("root")).render(
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
-
-        {/* Protected Admin Routes */}
-        {/* This setup assumes Admin.jsx might be a layout for all /admin/* routes */}
-        {/* and Admindash.jsx is the specific dashboard content. */}
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin" element={<Admin />}> {/* Admin layout route */}
-            {/* Child routes will render inside Admin.jsx's <Outlet /> */}
-            {/* Default child route for /admin (e.g., dashboard) */}
             <Route index element={<Admindash />} /> {/* Renders Admindash at /admin */}
             <Route path="dashboard" element={<Admindash />} /> {/* Explicit /admin/dashboard */}
             <Route path="doctors" element={<AdminDoctor />} />

@@ -17,6 +17,8 @@ command to Install all pacakages: bun i axios react-icons react-router-dom
 6. BcryptJS
 7. JSON web Token
 8. Cookie Parser
+9. JWT-Decode
 
 
-Command to install all Packages: npm i express mongoose cors body-parser dotenv bcryptjs jsonwebtoken cookieparser
+
+Command to install all Packages: npm i express mongoose cors body-parser dotenv bcryptjs jsonwebtoken cookieparser jwt-decode
