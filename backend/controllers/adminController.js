@@ -30,7 +30,7 @@ const loginAdmin = async (req, res) => {
             name: admin.name,
             role: admin.role || 'admin',  //Ensure role is included
         };
-        const token = jwt.sign(payload, secret, { expiresIn: '1m' }); // Token expires in 1 hour
+        const token = jwt.sign(payload, secret, { expiresIn: '1h' }); // Token expires in 1 hour
         res.json({
             message: 'Admin login successful',
             token, // Send token in response body
