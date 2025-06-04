@@ -1,18 +1,32 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import {  jwtDecode } from'jwt-decode';
+
 
 const AdminProtectedRoute = () => {
     const token = localStorage.getItem('adminToken');
-    // You could add more sophisticated token validation here if needed,
-    // e.g., checking token expiration or verifying with a backend endpoint.
-    // For now, we just check for presence.
 
     if (!token) {
         // If no token, redirect to the admin login page
         return <Navigate to="/admin-login" replace />; // Ensure '/admin-login' is your login route
     }
 
-    // If token exists, render the child components (the protected page)
+    try {
+        const decoded = jwtDecode(token);
+        const currentTime = Date.now() / 1000; // in seconds
+
+        if (decoded.exp < currentTime) {
+            // Token expired
+            localStorage.removeItem('adminToken');
+            return <Navigate to="/admin-login" replace />;
+        }
+    } catch (error) {
+        // Invalid token format or decode error
+        localStorage.removeItem('adminToken');
+        return <Navigate to="/admin-login" replace />;
+    }
+
+    // If token exists and is valid, render the child components (the protected page)
     return <Outlet />;
 };
 
