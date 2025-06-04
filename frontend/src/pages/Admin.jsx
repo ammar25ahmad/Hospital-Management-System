@@ -1,11 +1,7 @@
 import React from "react";
 import { Outlet } from 'react-router-dom';
-import Admindash from "../components/Admindash";
 import AdminMenu from "../components/AdminMenu";
-import AdminDoctor from "../components/AdminDoctor";
-import AdminPatients from "../components/AdminPatients";
-import AdminMedications from "../components/AdminMedications";
-import AdminNews from "../components/AdminNews";
+
 
 
 function Admin() {
