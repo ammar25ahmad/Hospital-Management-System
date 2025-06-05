@@ -19,17 +19,17 @@ const Admindash = () => {
     datasets: [
       {
         label: 'Recovered',
-        data: dashboardData?.patientStatus?.recoveredCounts || [10, 20, 30, 40, 50, 60, 70],
-        fill: false,
+        data: dashboardData?.patientStatus?.recoveredCounts || [4, 25, 45, 45, 58, 65, 80],
+        fill: true,
         borderColor: '#155DFC',
-        tension: 0.1,
+        tension: 0.5,
       },
       {
         label: 'Deaths',
-        data: dashboardData?.patientStatus?.deathCounts || [2, 3, 5, 4, 6, 7, 8],
-        fill: false,
+        data: dashboardData?.patientStatus?.deathCounts || [3, 60, 25, 55, 40, 70, 80],
+        fill: true,
         borderColor: 'red',
-        tension: 0.1,
+        tension: 0.5,
       },
     ],
   };
