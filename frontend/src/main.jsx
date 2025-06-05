@@ -24,6 +24,9 @@ createRoot(document.getElementById("root")).render(
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+
+
+
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin" element={<Admin />}> {/* Admin layout route */}
             <Route index element={<Admindash />} /> {/* Renders Admindash at /admin */}
