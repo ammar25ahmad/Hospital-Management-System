@@ -33,7 +33,7 @@ const Admindash = () => {
       },
     ],
   };
-
+ 
   const chartOptions = {
     responsive: true,
     plugins: {
