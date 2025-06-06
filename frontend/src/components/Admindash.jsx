@@ -15,19 +15,19 @@ const Admindash = () => {
   // Prepare chart data for deaths and recovered patients
   // Using sample data here; replace with real data from dashboardData if available
   const chartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Example months
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], // Example months
     datasets: [
       {
         label: 'Recovered',
         data: dashboardData?.patientStatus?.recoveredCounts || [4, 25, 45, 45, 58, 65, 80],
-        fill: true,
+        fill: false,
         borderColor: '#155DFC',
         tension: 0.5,
       },
       {
         label: 'Deaths',
         data: dashboardData?.patientStatus?.deathCounts || [3, 60, 25, 55, 40, 70, 80],
-        fill: true,
+        fill: false,
         borderColor: 'red',
         tension: 0.5,
       },
