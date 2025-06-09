@@ -3,10 +3,14 @@ require('dotenv').config();
 
 const secret = process.env.JWT_SECRET;
 
+// Middleware function to verify admin token
 const verifyAdminToken = (req, res, next) => {
+    // Get the authorization header from the request
     const authHeader = req.headers.authorization;
 
+    // Check if the authorization header exists
     if (authHeader) {
+        // Extract the token from the authorization header
         const token = authHeader.split('Bearer ')[1]; // Expects "Bearer <token>"
 
         if (!token) {
