@@ -3,6 +3,7 @@ import axios from "axios";
 
 function AdminPatient() {
   const [patients, setPatients] = useState([]);
+  const [satisfiedPatients, setSatisfiedPatients] = useState([])
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showReviewModal, setShowReviewModal] = useState(false);
