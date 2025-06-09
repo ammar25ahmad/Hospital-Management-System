@@ -52,6 +52,7 @@ function AdminDoctor() {
   };
   const [searchQuery, setSearchQuery] = useState("");
 
+  
   useEffect(() => {
     // Fetch doctors data
     const fetchDoctors = async (query = "") => {
