@@ -36,6 +36,20 @@ function AdminDoctor() {
     setShowAddModal(false);
   };
 
+  const handleDelete = async (e) => {
+    try {
+      // Send a DELETE request to the server to delete the doctor
+      const response = await axios.delete(
+        "http://localhost:3000/deleteDoctor}",
+        deleteDoctor
+      );
+      // Log the response data
+      console.log(response.data);
+    } catch (err) {
+      // Log any errors that occur
+      console.log(err + " Error in deleting doctor");
+    }
+  };
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -103,7 +117,7 @@ function AdminDoctor() {
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#155DFC]"></div>
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="bg-white rounded-lg shadow overflow-hidden gap-4">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -166,7 +180,10 @@ function AdminDoctor() {
                       {doctor.gender}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button className="text-[#155DFC] hover:text-blue-900">
+                      <button
+                        className="text-[#155DFC] hover:text-blue-900"
+                        onClick={() => handleDelete()}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
