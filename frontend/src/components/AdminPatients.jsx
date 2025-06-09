@@ -3,6 +3,7 @@ import axios from "axios";
 
 function AdminPatient() {
   const [patients, setPatients] = useState([]);
+  const [doctors, setDoctors] = useState([])
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newPatient, setNewPatient] = useState({
@@ -11,10 +12,10 @@ function AdminPatient() {
     gender: "",
     bloodGroup: "",
     phone: "",
-    department: "",
+    doctor: "",
     age: "",
     cnic: "",
-    password: "",
+    address: ""
   });
 
   // Function to handle adding a patient
@@ -76,6 +77,23 @@ function AdminPatient() {
 
     fetchPatients(searchQuery);
   }, [searchQuery]);
+
+  useEffect(() => {
+    // Fetch doctors data
+    const fetchDoctors = async () => {
+      try {
+          
+        const response = await axios.get("http://localhost:3000/fetchDoctor");
+        setDoctors(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
+        setLoading(false);
+      }
+    };
+    fetchDoctors();
+  }, []);
+
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -178,7 +196,7 @@ function AdminPatient() {
                             {patient.name}
                           </div>
                           <div className="text-sm text-gray-500">
-                            {patient.department}
+                            {patient.doctor}
                           </div>
                         </div>
                       </div>
@@ -339,24 +357,37 @@ function AdminPatient() {
                 <div>
                   <label
                     className="block text-gray-700 font-medium mb-1"
-                    htmlFor="department"
+                    htmlFor="doctor"
                   >
-                    Department
+                    Doctor
                   </label>
-                  <input
-                    id="department"
-                    type="text"
+                  <select
+                    id="Doctor"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newPatient.department}
+                    value={newPatient.doctor}
                     onChange={(e) =>
-                      setNewPatient({
-                        ...newPatient,
-                        department: e.target.value,
-                      })
+                      setNewPatient({ ...newPatient, doctor: e.target.value })
                     }
                     required
-                    name="department"
-                  />
+                    name="doctor"
+                  >
+                    <option value="" disabled>
+                      Select Doctor
+                    </option>
+                    {doctors.length > 0 ? (
+                      doctors.map((doctor) => {
+                        <option value={doctor.name +    doctor.department}>
+                          {doctor.name}  ({doctor.deparment})
+                        </option>
+                      })
+                    ): (
+                      <option value="" disabled>
+                        No doctors found
+                      </option>
+                    )
+                    }
+                   
+                  </select>
                 </div>
                 <div>
                   <label
@@ -432,20 +463,20 @@ function AdminPatient() {
               <div>
                 <label
                   className="block text-gray-700 font-medium mb-1"
-                  htmlFor="password"
+                  htmlFor="address"
                 >
-                  Password
+                  Address
                 </label>
                 <input
-                  id="password"
-                  type="password"
+                  id="address"
+                  type="address"
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={newPatient.password}
+                  value={newPatient.address}
                   onChange={(e) =>
-                    setNewPatient({ ...newPatient, password: e.target.value })
+                    setNewPatient({ ...newPatient, address: e.target.value })
                   }
                   required
-                  name="password"
+                  name="address"
                 />
               </div>
               <div className="flex justify-end space-x-3 pt-4 border-t">
