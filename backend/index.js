@@ -8,6 +8,7 @@ const connectToDatabase = require("./dbconnection"); // Importing Database Conne
 require("dotenv").config(); // Package for importing variables from .env file
 const doctorRoute = require("./routes/doctorRoute");
 const adminRoute = require("./routes/adminRoute"); // Import new admin routes
+const patientRoute = require("./routes/patientRoute"); // Import new admin routes
 
 // PORT Variable from .env file
 const PORT = process.env.PORT;
@@ -47,6 +48,8 @@ app.use("/fetchDoctor", doctorRoute);
 // Use Admin Routes - Prefixed with /api/admin
 app.use("/api/admin", adminRoute);
 
+// Use Patient Routes - Prefixed with /api/patient
+app.use("/fetchpatient", patientRoute);
 // PORT LISTENING
 
 app.listen(PORT, () => {

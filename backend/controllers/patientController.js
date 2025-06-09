@@ -16,7 +16,7 @@ async function fetchPatient(req, res) {
                 ]
             });
         } else {
-            doctors = await Patient.find({});
+            patients = await Patient.find({});
         }
         res.status(200).send(patients);
     } catch (err) {

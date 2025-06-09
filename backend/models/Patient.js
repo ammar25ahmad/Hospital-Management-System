@@ -17,7 +17,7 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: {
+  doctor: {
     type: String,
     required: true,
   },
