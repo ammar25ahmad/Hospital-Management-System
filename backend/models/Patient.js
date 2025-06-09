@@ -24,23 +24,24 @@ const patientSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
-    minLength: 11,
-    maxLength: 11,
+    minLength: 10,
+    maxLength: 10,
   },
   cnic: {
-    type: Number,
+    type: String,
     required: true,
+    minLength: 13,
+    maxLength: 13,
+    unique: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
   },
-  password: {
+  address: {
     type: String,
     required: true,
-    minLength: 8,
-    maxLength: 20,
   },
 });
 
