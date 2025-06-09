@@ -3,7 +3,11 @@ import axios from "axios";
 
 function AdminPatient() {
   const [patients, setPatients] = useState([]);
+<<<<<<< HEAD
   const [satisfiedPatients, setSatisfiedPatients] = useState([])
+=======
+  const [satisfiedPatients, setSatisfiedPatients] = useState([]);
+>>>>>>> b8a369a64feda3b6115d910f4f16d0df04123155
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showReviewModal, setShowReviewModal] = useState(false);
@@ -14,10 +18,10 @@ function AdminPatient() {
     gender: "",
     bloodGroup: "",
     phone: "",
-    doctor: "",
+    department: "",
     age: "",
     cnic: "",
-    address: "",
+    password: "",
   });
 
   // Function to handle adding a patient
@@ -70,6 +74,15 @@ function AdminPatient() {
         const patientResponse = await axios.get(patientUrl);
         setPatients(patientResponse.data);
 
+        // Fetch satisfied patients
+        const satisfiedPatientUrl = query
+          ? `http://localhost:3000/fetchSatisfiedPatients?q=${encodeURIComponent(
+              query
+            )}`
+          : "http://localhost:3000/fetchSatisfiedPatients";
+        const satisfiedPatientResponse = await axios.get(satisfiedPatientUrl);
+        setSatisfiedPatients(satisfiedPatientResponse.data);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -79,21 +92,6 @@ function AdminPatient() {
 
     fetchData(searchQuery);
   }, [searchQuery]);
-
-  useEffect(() => {
-    // Fetch doctors data
-    const fetchDoctors = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/fetchDoctor");
-        setDoctors(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching doctors:", error);
-        setLoading(false);
-      }
-    };
-    fetchDoctors();
-  }, []);
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -153,104 +151,244 @@ function AdminPatient() {
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#155DFC]"></div>
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow overflow-hidden gap-4">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Email
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Phone number
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Gender
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {patients.length > 0 ? (
-                patients.map((patient) => (
-                  <tr key={patient.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={patient.avatar || "/user.png"}
-                            alt=""
-                          />
-                        </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
-                            {patient.name}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Patients Table */}
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <h2 className="text-lg font-semibold text-gray-800 p-4 border-b">
+              All Patients
+            </h2>
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Email
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Phone
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Blood Group
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Gender
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {patients.length > 0 ? (
+                  patients.map((patient) => (
+                    <tr key={patient.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={patient.avatar || "/user.png"}
+                              alt=""
+                            />
                           </div>
-                          <div className="text-sm text-gray-500">
-                            {patient.department}
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {patient.name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {patient.department}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {patient.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {patient.phone}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {patient.bloodGroup}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {patient.gender}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button
-                        className="text-red-600 hover:text-red-900"
-                        onClick={() => handleDelete(patient.id)}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.email}
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        {patient.phone}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.bloodGroup}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.gender}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          className="text-red-600 hover:text-red-900"
+                          onClick={() => handleDelete(patient.id, "patient")}
                         >
-                          <path
-                            fillRule="evenodd"
-                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="6"
+                      className="px-6 py-4 text-center text-sm text-gray-500"
+                    >
+                      No patients found
                     </td>
                   </tr>
-                ))
-              ) : (
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Satisfied Patients Table */}
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <h2 className="text-lg font-semibold text-gray-800 p-4 border-b">
+              Satisfied Patients
+            </h2>
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
                 <tr>
-                  <td
-                    colSpan="7"
-                    className="px-6 py-4 text-center text-sm text-gray-500"
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    No patients found
-                  </td>
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Email
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Phone
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Blood Group
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Gender
+                  </th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {satisfiedPatients.length > 0 ? (
+                  satisfiedPatients.map((patient) => (
+                    <tr key={patient.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={patient.avatar || "/user.png"}
+                              alt=""
+                            />
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {patient.name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {patient.department}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.email}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.phone}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.bloodGroup}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {patient.gender}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          className="text-yellow-600 hover:text-yellow-900 mr-2"
+                          onClick={() => {
+                            setSelectedPatient(patient);
+                            setShowReviewModal(true);
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        </button>
+                        <button
+                          className="text-red-600 hover:text-red-900"
+                          onClick={() =>
+                            handleDelete(patient.id, "satisfiedPatient")
+                          }
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="6"
+                      className="px-6 py-4 text-center text-sm text-gray-500"
+                    >
+                      No satisfied patients found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
@@ -362,35 +500,24 @@ function AdminPatient() {
                 <div>
                   <label
                     className="block text-gray-700 font-medium mb-1"
-                    htmlFor="doctor"
+                    htmlFor="department"
                   >
-                    Doctor
+                    Department
                   </label>
-                  <select
-                    id="Doctor"
+                  <input
+                    id="department"
+                    type="text"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newPatient.doctor}
+                    value={newPatient.department}
                     onChange={(e) =>
-                      setNewPatient({ ...newPatient, doctor: e.target.value })
+                      setNewPatient({
+                        ...newPatient,
+                        department: e.target.value,
+                      })
                     }
                     required
-                    name="doctor"
-                  >
-                    <option value="" disabled>
-                      Select Doctor
-                    </option>
-                    {doctors.length > 0 ? (
-                      doctors.map((doctor) => {
-                        <option value={doctor.name + doctor.department}>
-                          {doctor.name} ({doctor.deparment})
-                        </option>;
-                      })
-                    ) : (
-                      <option value="" disabled>
-                        No doctors found
-                      </option>
-                    )}
-                  </select>
+                    name="department"
+                  />
                 </div>
                 <div>
                   <label
@@ -473,20 +600,20 @@ function AdminPatient() {
               <div>
                 <label
                   className="block text-gray-700 font-medium mb-1"
-                  htmlFor="address"
+                  htmlFor="password"
                 >
-                  Address
+                  Password
                 </label>
                 <input
-                  id="address"
-                  type="address"
+                  id="password"
+                  type="password"
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={newPatient.address}
+                  value={newPatient.password}
                   onChange={(e) =>
-                    setNewPatient({ ...newPatient, address: e.target.value })
+                    setNewPatient({ ...newPatient, password: e.target.value })
                   }
                   required
-                  name="address"
+                  name="password"
                 />
               </div>
               <div className="flex justify-end space-x-3 pt-4 border-t">
