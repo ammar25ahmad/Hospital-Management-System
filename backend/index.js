@@ -50,6 +50,7 @@ app.use("/api/admin", adminRoute);
 
 // Use Patient Routes - Prefixed with /api/patient
 app.use("/fetchpatient", patientRoute);
+app.use("/addpatient", patientRoute);
 // PORT LISTENING
 
 app.listen(PORT, () => {

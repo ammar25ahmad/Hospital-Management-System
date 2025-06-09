@@ -14,7 +14,7 @@ function AdminPatient() {
     email: "",
     gender: "",
     bloodGroup: "",
-    phone: "",
+    phoneNumber: "",
     doctor: "",
     age: "",
     cnic: "",
@@ -88,7 +88,7 @@ function AdminPatient() {
 
         // Fetch satisfied patients
         // const satisfiedPatientUrl = query
-        //   question mark here `http://localhost:3000/fetchSatisfiedPatients?q=${encodeURIComponent(
+        //   ? `http://localhost:3000/fetchSatisfiedPatients?q=${encodeURIComponent(
         //       query
         //     )}`
         //   : "http://localhost:3000/fetchSatisfiedPatients";
@@ -428,20 +428,20 @@ function AdminPatient() {
                 <div>
                   <label
                     className="block text-gray-700 font-medium mb-1"
-                    htmlFor="phone"
+                    htmlFor="phoneNumber"
                   >
                     Phone
                   </label>
                   <input
-                    id="phone"
+                    id="phoneNumber"
                     type="text"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value={newPatient.phone}
+                    value={newPatient.phoneNumber}
                     onChange={(e) =>
-                      setNewPatient({ ...newPatient, phone: e.target.value })
+                      setNewPatient({ ...newPatient, phoneNumber: e.target.value })
                     }
                     required
-                    name="phone"
+                    name="phoneNumber"
                   />
                 </div>
                 <div>

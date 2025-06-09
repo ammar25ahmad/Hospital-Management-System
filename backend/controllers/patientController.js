@@ -25,7 +25,19 @@ async function fetchPatient(req, res) {
     }
 }
 
+
+async function addPatient(req, res) {
+    try {
+        const newPatient = new Patient(req.body);
+        await newPatient.save();
+        res.status(201).json(newPatient);
+    }catch(error){
+        console.log(error)
+    }
+}
+
 module.exports = {
-    fetchPatient
+    fetchPatient,
+    addPatient,
 }
 
