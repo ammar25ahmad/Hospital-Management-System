@@ -1,44 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { Chart as ChartJS } from 'chart.js/auto'
-import { Line } from 'react-chartjs-2'
-import { Link, useNavigate } from 'react-router-dom'
+import { Chart as ChartJS } from "chart.js/auto";
+import { Line } from "react-chartjs-2";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import { GiCrossMark } from "react-icons/gi";
 
 const Admindash = () => {
   const [dashboardData, setDashboardData] = useState(null);
-  const [error, setError] = useState('');
-  const [adminName, setAdminName] = useState('Admin');
+  const [error, setError] = useState("");
+  const [adminName, setAdminName] = useState("Admin");
   const navigate = useNavigate();
 
   // Prepare chart data for deaths and recovered patients
   // Using sample data here; replace with real data from dashboardData if available
   const chartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], // Example months
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"], // Example months
     datasets: [
       {
-        label: 'Recovered',
-        data: dashboardData?.patientStatus?.recoveredCounts || [4, 25, 45, 45, 58, 65, 80],
+        label: "Recovered",
+        data: dashboardData?.patientStatus?.recoveredCounts || [
+          4, 25, 45, 45, 58, 65, 80,
+        ],
         fill: false,
-        borderColor: '#155DFC',
+        borderColor: "#155DFC",
         tension: 0.5,
       },
       {
-        label: 'Deaths',
-        data: dashboardData?.patientStatus?.deathCounts || [3, 60, 25, 55, 40, 70, 80],
+        label: "Deaths",
+        data: dashboardData?.patientStatus?.deathCounts || [
+          3, 60, 25, 55, 40, 70, 80,
+        ],
         fill: false,
-        borderColor: 'red',
+        borderColor: "red",
         tension: 0.5,
       },
     ],
   };
- 
+
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
     },
     scales: {
@@ -50,21 +54,24 @@ const Admindash = () => {
 
   useEffect(() => {
     const fetchDashboardData = async () => {
-      const token = localStorage.getItem('adminToken');
+      const token = localStorage.getItem("adminToken");
       if (!token) {
-        setError('No token found. Please login.');
+        setError("No token found. Please login.");
         // navigate('/admin/login'); // Optionally redirect to login
         return;
       }
 
       try {
-        const response = await fetch('http://localhost:3000/api/admin/dashboard', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "http://localhost:3000/api/admin/dashboard",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -76,24 +83,24 @@ const Admindash = () => {
           } else if (data.admin && data.admin.email) {
             setAdminName(data.admin.email); // Fallback to email if name is not present
           }
-          setError('');
+          setError("");
         } else {
-          setError(data.message || 'Failed to fetch dashboard data.');
+          setError(data.message || "Failed to fetch dashboard data.");
           if (response.status === 401 || response.status === 403) {
             // Token might be invalid or expired
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('adminUser');
+            localStorage.removeItem("adminToken");
+            localStorage.removeItem("adminUser");
             // navigate('/admin/login'); // Redirect to login
           }
         }
       } catch (err) {
-        console.error('Fetch dashboard error:', err);
-        setError('An error occurred while fetching dashboard data.');
+        console.error("Fetch dashboard error:", err);
+        setError("An error occurred while fetching dashboard data.");
       }
     };
 
     fetchDashboardData();
-    const adminUser = JSON.parse(localStorage.getItem('adminUser'));
+    const adminUser = JSON.parse(localStorage.getItem("adminUser"));
     if (adminUser && adminUser.name) {
       setAdminName(adminUser.name);
     } else if (adminUser && adminUser.email) {
@@ -105,7 +112,9 @@ const Admindash = () => {
     <>
       <main className="flex-1 p-4">
         <header className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl text-blue-600 font-bold">Hospital Dashboard</h1>
+          <h1 className="text-2xl text-blue-600 font-bold">
+            Hospital Dashboard
+          </h1>
           <div className="flex items-center">
             <span className="mr-2">
               <FaUser />
@@ -113,20 +122,20 @@ const Admindash = () => {
             <p>{adminName}</p> {/* Display dynamic admin name */}
           </div>
         </header>
-        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {error && <p style={{ color: "red" }}>Error: {error}</p>}
         {/* Display loading or dashboard content based on dashboardData */}
         {!dashboardData && !error && <p>Loading dashboard...</p>}
         {dashboardData && (
           <>
             {/* Cards Content */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              <Link to='/admin/patients'>
+              <Link to="/admin/patients">
                 <div className="bg-white rounded-lg shadow-lg p-6">
                   <h2 className="text-xl font-bold mb-2">New Patients</h2>
                   <p className="text-gray-600">10</p>
                 </div>
               </Link>
-              <Link to='/admin/doctors'>
+              <Link to="/admin/doctors">
                 <div className="bg-white rounded-lg shadow-lg p-6">
                   <h2 className="text-xl font-bold mb-2">Our Doctors</h2>
                   <p className="text-gray-600">50</p>
@@ -151,8 +160,9 @@ const Admindash = () => {
                 </div>
                 <div className="flex justify-around mt-4">
                   <span className="text-gray-600 ">
-                    Recovered: <b>{dashboardData.patientStatus?.recovered || 113}</b>
-                  </span> 
+                    Recovered:{" "}
+                    <b>{dashboardData.patientStatus?.recovered || 113}</b>
+                  </span>
                   <span>
                     Death: <b>{dashboardData.patientStatus?.deaths || 8}</b>
                   </span>
@@ -175,7 +185,9 @@ const Admindash = () => {
             {/* Side wale Tables */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">Appointments Requests</h3>
+                <h3 className="text-xl font-bold mb-2">
+                  Appointments Requests
+                </h3>
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left border-b border-gray-200">
