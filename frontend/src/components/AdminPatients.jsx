@@ -16,7 +16,7 @@ function AdminPatient() {
     doctor: "",
     age: "",
     cnic: "",
-    address: ""
+    address: "",
   });
 
   // Function to handle adding a patient
@@ -83,7 +83,6 @@ function AdminPatient() {
     // Fetch doctors data
     const fetchDoctors = async () => {
       try {
-          
         const response = await axios.get("http://localhost:3000/fetchDoctor");
         setDoctors(response.data);
         setLoading(false);
@@ -94,7 +93,6 @@ function AdminPatient() {
     };
     fetchDoctors();
   }, []);
-
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -382,17 +380,15 @@ function AdminPatient() {
                     </option>
                     {doctors.length > 0 ? (
                       doctors.map((doctor) => {
-                        <option value={doctor.name +    doctor.department}>
-                          {doctor.name}  ({doctor.deparment})
-                        </option>
+                        <option value={doctor.name + doctor.department}>
+                          {doctor.name} ({doctor.deparment})
+                        </option>;
                       })
-                    ): (
+                    ) : (
                       <option value="" disabled>
                         No doctors found
                       </option>
-                    )
-                    }
-                   
+                    )}
                   </select>
                 </div>
                 <div>
