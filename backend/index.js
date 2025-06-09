@@ -4,7 +4,6 @@ const app = express();
 const bodyParser = require("body-parser"); // For Parsing the JSON Data
 const cors = require("cors"); // For Cross Origin Communications means to send & receive data from backend to frontend
 const cookieParser = require("cookie-parser"); // For parsing cookies
-const mongoose = require("mongoose"); // For connecting to Database
 const connectToDatabase = require("./dbconnection"); // Importing Database Connection
 require("dotenv").config(); // Package for importing variables from .env file
 const doctorRoute = require("./routes/doctorRoute");
@@ -43,6 +42,7 @@ app.get("/", async (req, res) => {
 // Main Work
 
 app.use("/adddoctor", doctorRoute);
+app.use("/fetchDoctor", doctorRoute);
 
 // Use Admin Routes - Prefixed with /api/admin
 app.use("/api/admin", adminRoute);

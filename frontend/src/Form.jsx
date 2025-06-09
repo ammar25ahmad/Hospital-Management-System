@@ -66,7 +66,7 @@ const handleSubmit = async(e) => {
                 <input className="border border-2 border-cyan-400" type="password" name="password" placeholder="Password" onChange={handleChange} required/>
                 <br /><br />
                 <button className="border border-2 p-1 cursor-pointer" type="submit">Add</button>
-            </form>
+            </form> 
         </>
     )
 }
