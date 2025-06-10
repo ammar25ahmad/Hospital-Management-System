@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { FaArrowRight } from "react-icons/fa";
 function AdminDoctor() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [newDoctor, setNewDoctor] = useState({
     name: "",
     email: "",
@@ -15,49 +17,38 @@ function AdminDoctor() {
     cnic: "",
     password: "",
   });
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Function to handle adding a doctor
   const handleAddDoctor = async (e) => {
-    // Prevent the default form submission
     e.preventDefault();
     try {
-      // Send a POST request to the server to add a new doctor
       const response = await axios.post(
         "http://localhost:3000/addDoctor",
         newDoctor
       );
-      // Log the response data
       console.log(response.data);
+      // Refresh doctors list after adding
+      const fetchResponse = await axios.get(
+        "http://localhost:3000/fetchDoctor"
+      );
+      setDoctors(fetchResponse.data);
     } catch (err) {
-      // Log any errors that occur
       console.log(err + " Error in adding doctor");
     }
-    // Set the showAddModal state to false
     setShowAddModal(false);
   };
 
-  const handleDelete = async (e) => {
-    try {
-      // Send a DELETE request to the server to delete the doctor
-      const response = await axios.delete(
-        "http://localhost:3000/deleteDoctor}",
-        deleteDoctor
-      );
-      // Log the response data
-      console.log(response.data);
-    } catch (err) {
-      // Log any errors that occur
-      console.log(err + " Error in deleting doctor");
-    }
+  // Function to handle showing doctor details
+  const handletoggledetail = (doctor) => {
+    setSelectedDoctor(doctor);
+    setShowDetail(true);
   };
-  const [searchQuery, setSearchQuery] = useState("");
 
-  
+  // Function to handle deleting a doctor
   useEffect(() => {
-    // Fetch doctors data
     const fetchDoctors = async (query = "") => {
       try {
-        // Replace with your actual API endpoint
         const url = query
           ? `http://localhost:3000/fetchDoctor?q=${encodeURIComponent(query)}`
           : "http://localhost:3000/fetchDoctor";
@@ -146,6 +137,12 @@ function AdminDoctor() {
                 >
                   Gender
                 </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -182,21 +179,10 @@ function AdminDoctor() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
-                        className="text-[#155DFC] hover:text-blue-900"
-                        onClick={() => handleDelete()}
+                        className="text-[#155DFC] hover:text-blue-900 mr-4"
+                        onClick={() => handletoggledetail(doctor)}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <FaArrowRight size={20} />
                       </button>
                     </td>
                   </tr>
@@ -204,7 +190,7 @@ function AdminDoctor() {
               ) : (
                 <tr>
                   <td
-                    colSpan="7"
+                    colSpan="5"
                     className="px-6 py-4 text-center text-sm text-gray-500"
                   >
                     No doctors found
@@ -357,6 +343,7 @@ function AdminDoctor() {
                     }
                     required
                     name="cnic"
+                    name="cnic"
                   />
                 </div>
                 <div>
@@ -420,6 +407,90 @@ function AdminDoctor() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Doctor Details Modal */}
+      {showDetail && selectedDoctor && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+            <div className="flex justify-between items-center border-b pb-3 mb-4">
+              <h3 className="text-xl font-semibold text-gray-800">
+                Doctor Details
+              </h3>
+              <button
+                onClick={() => setShowDetail(false)}
+                className="text-gray-600 hover:text-gray-900 transition"
+                aria-label="Close modal"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Name
+                </label>
+                <p className="text-gray-900">{selectedDoctor.name}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Email
+                </label>
+                <p className="text-gray-900">{selectedDoctor.email}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Phone
+                </label>
+                <p className="text-gray-900">{selectedDoctor.phone}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Department
+                </label>
+                <p className="text-gray-900">{selectedDoctor.department}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Age
+                </label>
+                <p className="text-gray-900">{selectedDoctor.age}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  CNIC
+                </label>
+                <p className="text-gray-900">{selectedDoctor.cnic}</p>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Gender
+                </label>
+                <p className="text-gray-900">{selectedDoctor.gender}</p>
+              </div>
+            </div>
+            <div className="flex justify-end space-x-3 pt-4 border-t">
+              <button
+                type="button"
+                onClick={() => setShowDetail(false)}
+                className="px-4 py-2 bg-gray-300 rounded-md text-gray-700 hover:bg-gray-400 transition"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

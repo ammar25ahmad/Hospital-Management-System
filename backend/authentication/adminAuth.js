@@ -36,12 +36,9 @@ const verifyAdminToken = (req, res, next) => {
       // Check if the decoded token has an admin role or necessary identifier
       if (!decoded || decoded.role !== "admin") {
         // Ensure the token signifies an admin user and is decoded
-        return res
-          .status(403)
-          .json({
-            message:
-              "Access denied. Admin privileges required or token invalid.",
-          });
+        return res.status(403).json({
+          message: "Access denied. Admin privileges required or token invalid.",
+        });
       }
 
       req.admin = decoded; // Add decoded admin info to the request object
