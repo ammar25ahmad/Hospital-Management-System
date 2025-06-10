@@ -212,7 +212,7 @@ function AdminPatient() {
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
                         {patient.phoneNumber}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700 text-center">
                         {patient.bloodGroup}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
