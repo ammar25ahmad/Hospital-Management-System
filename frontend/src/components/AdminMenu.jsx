@@ -11,16 +11,16 @@ function AdminMenu() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
-    navigate('/admin-login');
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminUser");
+    navigate("/admin-login");
   };
 
   return (
     <aside className="w-60 bg-blue-600 text-white p-4 h-screen">
       <h1 className="text-2xl font-bold mb-4 text-center">Admin</h1>
       <ul>
-        <Link to='/admin'>
+        <Link to="/admin">
           <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
             <span className="mr-2">
               <MdOutlineDashboard />
@@ -45,20 +45,20 @@ function AdminMenu() {
           </li>
         </Link>
         <Link to="/admin/medications">
-        <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
-          <span className="mr-2">
-            <CiMedicalCross />
-          </span>
-          Medications
-        </li>
+          <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
+            <span className="mr-2">
+              <CiMedicalCross />
+            </span>
+            Medications
+          </li>
         </Link>
         <Link to="/admin/news">
-        <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
-          <span className="mr-2">
-            <FaRegNewspaper />
-          </span>
-          News
-        </li>
+          <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
+            <span className="mr-2">
+              <FaRegNewspaper />
+            </span>
+            News
+          </li>
         </Link>
         {/* Logout Button */}
         <li
@@ -72,7 +72,7 @@ function AdminMenu() {
         </li>
       </ul>
     </aside>
-  )
+  );
 }
 
-export default AdminMenu
+export default AdminMenu;

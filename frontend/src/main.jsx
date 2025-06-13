@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 // Page Imports
@@ -25,12 +25,14 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
 
-
-
         <Route element={<AdminProtectedRoute />}>
-          <Route path="/admin" element={<Admin />}> {/* Admin layout route */}
-            <Route index element={<Admindash />} /> {/* Renders Admindash at /admin */}
-            <Route path="dashboard" element={<Admindash />} /> {/* Explicit /admin/dashboard */}
+          <Route path="/admin" element={<Admin />}>
+            {" "}
+            {/* Admin layout route */}
+            <Route index element={<Admindash />} />{" "}
+            {/* Renders Admindash at /admin */}
+            <Route path="dashboard" element={<Admindash />} />{" "}
+            {/* Explicit /admin/dashboard */}
             <Route path="doctors" element={<AdminDoctor />} />
             <Route path="patients" element={<AdminPatients />} />
             <Route path="medications" element={<AdminMedications />} />
