@@ -9,6 +9,7 @@ require("dotenv").config(); // Package for importing variables from .env file
 const doctorRoute = require("./routes/doctorRoute");
 const adminRoute = require("./routes/adminRoute"); // Import new admin routes
 const patientRoute = require("./routes/patientRoute"); // Import new admin routes
+const medicineRoute = require("./routes/medicineRoute"); // Import new admin routes
 
 // PORT Variable from .env file
 const PORT = process.env.PORT;
@@ -44,7 +45,6 @@ app.get("/", async (req, res) => {
 
 app.use("/adddoctor", doctorRoute);
 app.use("/fetchDoctor", doctorRoute);
-
 // Use Admin Routes - Prefixed with /api/admin
 app.use("/api/admin", adminRoute);
 
@@ -52,6 +52,7 @@ app.use("/api/admin", adminRoute);
 app.use("/fetchpatient", patientRoute);
 app.use("/addpatient", patientRoute);
 // PORT LISTENING
+app.use("/fetchmedicine", medicineRoute);
 
 app.listen(PORT, () => {
   console.log(`Server Running on PORT ${PORT}`);
