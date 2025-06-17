@@ -53,6 +53,7 @@ app.use("/fetchpatient", patientRoute);
 app.use("/addpatient", patientRoute);
 // PORT LISTENING
 app.use("/fetchmedicine", medicineRoute);
+app.use("/addmedicine", medicineRoute);
 
 app.listen(PORT, () => {
   console.log(`Server Running on PORT ${PORT}`);

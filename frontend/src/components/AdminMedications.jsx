@@ -21,7 +21,7 @@ function AdminMedicine() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/fetchmedicine",
+        "http://localhost:3000/addmedicine",
         newMedicine
       );
       console.log(response.data);
@@ -264,7 +264,7 @@ function AdminMedicine() {
                   </label>
                   <input
                     id="quantity"
-                    type="number"
+                    type="text"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={newMedicine.quantity}
                     onChange={(e) =>

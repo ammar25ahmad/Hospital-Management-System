@@ -3,10 +3,10 @@ const Medicine = require("../models/Medicine");
 async function fetchMedicine(req, res) {
   try {
     const searchQuery = req.query.q;
-    let patients;
+    let medicines;
     if (searchQuery) {
       const regex = new RegExp(searchQuery, "i"); // case-insensitive search
-      patients = await Medicine.find({
+      medicines = await Medicine.find({
         $or: [
           { name: regex },
           { price: regex },
@@ -15,9 +15,9 @@ async function fetchMedicine(req, res) {
         ],
       });
     } else {
-      Medicine = await Medicine.find({});
+      medicines = await Medicine.find({});
     }
-    res.status(200).send(Medicine);
+    res.status(200).send(medicines);
   } catch (err) {
     console.log(err + " ( Error in fetching this medicine from database)");
     res.status(500).send(err);
