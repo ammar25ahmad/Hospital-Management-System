@@ -8,6 +8,7 @@ function AdminMedicine() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
+  const [ShowImage, setShowImage] = useState(false);
   const [newMedicine, setNewMedicine] = useState({
     name: "",
     price: "",
@@ -377,12 +378,52 @@ function AdminMedicine() {
             <div className="flex justify-end space-x-3 pt-4 border-t">
               <button
                 type="button"
+                onClick={() => setShowImage(true)}
+                className="px-4 py-2 bg-[#155DFC] text-white rounded-md hover:bg-blue-700 transition"
+                aria-label="Show medicine image"
+                disabled={!selectedMedicine.image} // Disable if no image
+              >
+                Show Image
+              </button>
+              <button
+                type="button"
                 onClick={() => setShowDetail(false)}
                 className="px-4 py-2 bg-gray-300 rounded-md text-gray-700 hover:bg-gray-400 transition"
               >
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Show Image Modal */}
+      {ShowImage && selectedMedicine?.image && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative bg-white rounded-lg shadow-xl p-4 max-w-lg w-full">
+            <button
+              onClick={() => setShowImage(false)}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 transition"
+              aria-label="Close image modal"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <img
+              src={selectedMedicine.image}
+              alt={`Image of ${selectedMedicine.name}`}
+              className="w-full h-auto max-h-[80vh] object-contain rounded-md"
+              onError={(e) => (e.target.src = "/path/to/fallback-image.jpg")} // Fallback image
+            />
           </div>
         </div>
       )}
