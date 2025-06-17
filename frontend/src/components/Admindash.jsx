@@ -168,16 +168,24 @@ const Admindash = () => {
                   </span>
                 </div>
               </div>
-              <div className="bg-blue-700 text-white p-4 rounded-lg shadow-lg">
-                <h2 className="text-xl font-bold mb-2">Ali Ahmad</h2>
-                <p>Emergency</p>
-                <p>Sergimade Hospital</p>
-                <div className="mt-4">
-                  <p>
-                    Hours:<b>3,890</b>
+              <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h2 className="text-2xl font-semibold mb-4 tracking-tight">
+                  Ali Ahmad
+                </h2>
+                <p className="text-sm mb-2 opacity-90">Emergency</p>
+                <p className="text-sm mb-4 opacity-90">Sergimade Hospital</p>
+                <div className="mt-4 text-sm">
+                  <p className="mb-2 flex items-center">
+                    <span className="font-semibold mr-2">Hours:</span>
+                    <span className="bg-blue-800/50 px-2 py-1 rounded-full">
+                      3,890
+                    </span>
                   </p>
-                  <p>
-                    Patients:<b>1870</b>
+                  <p className="flex items-center">
+                    <span className="font-semibold mr-2">Patients:</span>
+                    <span className="bg-blue-800/50 px-2 py-1 rounded-full">
+                      1870
+                    </span>
                   </p>
                 </div>
               </div>
