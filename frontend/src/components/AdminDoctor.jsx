@@ -343,7 +343,6 @@ function AdminDoctor() {
                     }
                     required
                     name="cnic"
-                    name="cnic"
                   />
                 </div>
                 <div>
