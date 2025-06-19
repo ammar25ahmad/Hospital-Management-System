@@ -6,7 +6,7 @@ function AdminSettings() {
     id: 1,
     name: "John Doe",
     email: "john.doe@example.com",
-    password: "********", // Placeholder for security
+    password: "123456789",
   });
   const [formData, setFormData] = useState({
     name: "",
@@ -29,20 +29,14 @@ function AdminSettings() {
 
   const fetchAdminData = async () => {
     try {
-      // Simulate API call
-      // const response = await api.get('/admin/me');
-      // setAdmin(response.data);
       setError("");
     } catch (err) {
       setError("Failed to fetch admin data");
     }
   };
 
-  // Mock API call to update admin data (UPDATE)
   const updateAdminData = async (data) => {
     try {
-      // Simulate API call
-      // await api.put('/admin/me', data);
       setAdmin((prev) => ({
         ...prev,
         name: data.name,
