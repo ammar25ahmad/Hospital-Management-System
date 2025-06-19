@@ -17,6 +17,9 @@ const MedicineSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+  }, // Image URL
 });
 
 const Medicine = mongoose.model("Medicine", MedicineSchema);

@@ -12,6 +12,7 @@ async function fetchMedicine(req, res) {
           { price: regex },
           { quantity: regex },
           { description: regex },
+          { image: regex },
         ],
       });
     } else {

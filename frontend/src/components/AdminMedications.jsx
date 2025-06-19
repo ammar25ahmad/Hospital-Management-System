@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "axios"; // Remove unused 'all' import
 import { FaArrowRight } from "react-icons/fa";
 
 function AdminMedicine() {
@@ -8,12 +8,13 @@ function AdminMedicine() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
-  const [ShowImage, setShowImage] = useState(false);
+  const [showImage, setShowImage] = useState(false); // Use camelCase for consistency
   const [newMedicine, setNewMedicine] = useState({
     name: "",
     price: "",
     quantity: "",
     description: "",
+    image: "", // Add image field
   });
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -33,9 +34,15 @@ function AdminMedicine() {
         }`
       );
       setMedicines(fetchResponse.data);
-      setNewMedicine({ name: "", price: "", quantity: "", description: "" });
+      setNewMedicine({
+        name: "",
+        price: "",
+        quantity: "",
+        description: "",
+        image: "", // Reset image field
+      });
     } catch (err) {
-      console.log(err + " Error in adding medicine");
+      console.error("Error in adding medicine:", err);
     }
     setShowAddModal(false);
   };
@@ -161,7 +168,7 @@ function AdminMedicine() {
                     <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                       {medicine.quantity}
                     </td>
-                    <td className="px-3 py-2  text-sm text-gray-500">
+                    <td className="px-3 py-2 text-sm text-gray-500">
                       {medicine.description}
                     </td>
                     <td className="px-6 py-2 whitespace-nowrap text-right text-sm font-medium">
@@ -300,6 +307,25 @@ function AdminMedicine() {
                     rows="3"
                   />
                 </div>
+                <div className="sm:col-span-2">
+                  <label
+                    className="block text-gray-700 font-medium mb-1"
+                    htmlFor="image"
+                  >
+                    Image URL
+                  </label>
+                  <input
+                    id="image"
+                    type="url"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMedicine.image}
+                    onChange={(e) =>
+                      setNewMedicine({ ...newMedicine, image: e.target.value })
+                    }
+                    placeholder="https://example.com/medicine-image.jpg"
+                    name="image"
+                  />
+                </div>
               </div>
               <div className="flex justify-end space-x-3 pt-4 border-t">
                 <button
@@ -398,7 +424,7 @@ function AdminMedicine() {
       )}
 
       {/* Show Image Modal */}
-      {ShowImage && selectedMedicine?.image && (
+      {showImage && selectedMedicine && selectedMedicine.image && (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
           <div className="relative bg-white rounded-lg shadow-xl p-4 max-w-lg w-full">
             <button
@@ -420,8 +446,8 @@ function AdminMedicine() {
             </button>
             <img
               src={selectedMedicine.image}
-              alt={`Image of ${selectedMedicine.name}`}
-              className="w-full h-auto max-h-[80vh] object-contain rounded-md"
+              alt={`${selectedMedicine.name} image`}
+              className="w-full h-full max-h-[80vh] object-contain rounded-md"
               onError={(e) => (e.target.src = "/path/to/fallback-image.jpg")} // Fallback image
             />
           </div>
