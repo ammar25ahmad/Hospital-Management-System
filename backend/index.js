@@ -40,6 +40,7 @@ connectToDatabase();
 app.get("/", async (req, res) => {
   res.send("Server is running");
 });
+app.use("/api/admin", adminRoute);
 
 // Main Work
 

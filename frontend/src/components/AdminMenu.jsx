@@ -52,12 +52,12 @@ function AdminMenu() {
             Medications
           </li>
         </Link>
-        <Link to="/admin/news">
+        <Link to="/admin/settings">
           <li className="mb-4 flex items-center bg-blue-700 rounded-lg p-2">
             <span className="mr-2">
               <FaRegNewspaper />
             </span>
-            News
+            Settings
           </li>
         </Link>
         {/* Logout Button */}

@@ -15,7 +15,7 @@ import Admindash from "./components/Admindash"; // Assuming this is the actual d
 import AdminDoctor from "./components/AdminDoctor";
 import AdminPatients from "./components/AdminPatients";
 import AdminMedications from "./components/AdminMedications";
-import AdminNews from "./components/AdminNews";
+import AdminSettings from "./components/AdminSettings";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -36,7 +36,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="doctors" element={<AdminDoctor />} />
             <Route path="patients" element={<AdminPatients />} />
             <Route path="medications" element={<AdminMedications />} />
-            <Route path="news" element={<AdminNews />} />
+            <Route path="settings" element={<AdminSettings />} />
             {/* Add other admin sub-routes here */}
           </Route>
         </Route>
