@@ -29,7 +29,7 @@ function AdminLogin() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/admin/login", {
+      const response = await fetch("https://hospital-management-system-bice.vercel.app/api/admin/login", {
         // Updated API endpoint
         method: "POST",
         headers: {

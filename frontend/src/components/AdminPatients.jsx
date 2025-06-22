@@ -24,7 +24,7 @@ function AdminPatient() {
     // Fetch doctors data
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/fetchDoctor");
+        const response = await axios.get("https://hospital-management-system-bice.vercel.app/fetchDoctor");
         setDoctors(response.data);
         setLoading(false);
       } catch (error) {
@@ -41,7 +41,7 @@ function AdminPatient() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/addPatient",
+        "https://hospital-management-system-bice.vercel.app/addPatient",
         newPatient
       );
       setPatients([...patients, response.data]);
@@ -60,8 +60,8 @@ function AdminPatient() {
   //   try {
   //     const endpoint =
   //       type === "patient"
-  //         ? `http://localhost:3000/deletePatient/${id}`
-  //         : `http://localhost:3000/deleteSatisfiedPatient/${id}`;
+  //         ? `https://hospital-management-system-bice.vercel.app/deletePatient/${id}`
+  //         : `https://hospital-management-system-bice.vercel.app/deleteSatisfiedPatient/${id}`;
   //     const response = await axios.delete(endpoint);
   //     if (type === "patient") {
   //       setPatients(patients.filter((patient) => patient.id !== id && patient._id !== id));
@@ -84,17 +84,17 @@ function AdminPatient() {
       try {
         // Fetch patients
         const patientUrl = query
-          ? `http://localhost:3000/fetchpatient?q=${encodeURIComponent(query)}`
-          : "http://localhost:3000/fetchpatient";
+          ? `https://hospital-management-system-bice.vercel.app/fetchpatient?q=${encodeURIComponent(query)}`
+          : "https://hospital-management-system-bice.vercel.app/fetchpatient";
         const patientResponse = await axios.get(patientUrl);
         setPatients(patientResponse.data);
 
         // Fetch satisfied patients
         // const satisfiedPatientUrl = query
-        //   ? `http://localhost:3000/fetchSatisfiedPatients?q=${encodeURIComponent(
+        //   ? `https://hospital-management-system-bice.vercel.app/fetchSatisfiedPatients?q=${encodeURIComponent(
         //       query
         //     )}`
-        //   : "http://localhost:3000/fetchSatisfiedPatients";
+        //   : "https://hospital-management-system-bice.vercel.app/fetchSatisfiedPatients";
         // const satisfiedPatientResponse = await axios.get(satisfiedPatientUrl);
         // setSatisfiedPatients(satisfiedPatientResponse.data);
 

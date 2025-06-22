@@ -26,7 +26,7 @@ const handleChange = (e) => {
 const handleSubmit = async(e) => {
     e.preventDefault()
     try{
-        const response = await axios.post('http://localhost:3000/addDoctor', formData)
+        const response = await axios.post('https://hospital-management-system-bice.vercel.app/addDoctor', formData)
         console.log(response.data)
     }catch(err){
         console.log(err + " Error in adding doctor")

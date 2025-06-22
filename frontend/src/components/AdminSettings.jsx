@@ -18,7 +18,7 @@ function AdminSettings() {
     }
     try {
       const response = await fetch(
-        "http://localhost:3000/api/admin/dashboard",
+        "https://hospital-management-system-bice.vercel.app/api/admin/dashboard",
         {
           method: "GET",
           headers: {
@@ -72,7 +72,7 @@ function AdminSettings() {
       // if(adminString){
       //   const admin = JSON.parse(adminString);
       //   const adminID = admin.id;
-      const response = await axios.post('http://localhost:3000/api/admin/change-password', {
+      const response = await axios.post('https://hospital-management-system-bice.vercel.app/api/admin/change-password', {
         adminEmail, currentPassword, newPassword
       }
       )

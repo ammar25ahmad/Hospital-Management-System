@@ -24,13 +24,13 @@ function AdminDoctor() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/addDoctor",
+        "https://hospital-management-system-bice.vercel.app/addDoctor",
         newDoctor
       );
       console.log(response.data);
       // Refresh doctors list after adding
       const fetchResponse = await axios.get(
-        "http://localhost:3000/fetchDoctor"
+        "https://hospital-management-system-bice.vercel.app/fetchDoctor"
       );
       setDoctors(fetchResponse.data);
     } catch (err) {
@@ -50,8 +50,8 @@ function AdminDoctor() {
     const fetchDoctors = async (query = "") => {
       try {
         const url = query
-          ? `http://localhost:3000/fetchDoctor?q=${encodeURIComponent(query)}`
-          : "http://localhost:3000/fetchDoctor";
+          ? `https://hospital-management-system-bice.vercel.app/fetchDoctor?q=${encodeURIComponent(query)}`
+          : "https://hospital-management-system-bice.vercel.app/fetchDoctor";
         const response = await axios.get(url);
         setDoctors(response.data);
         setLoading(false);

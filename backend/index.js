@@ -30,7 +30,7 @@ app.use(cookieParser()); // Use cookie-parser middleware
 
 //  Defining Cors URL to pass data over cross origin means send or recieve data from frontend to backend
 const corsOption = {
-  origin: ["http://localhost:5173"],
+  origin: ["https://hmshospitalmanagementsystem.netlify.app"],
 };
 app.use(cors(corsOption));
 

@@ -63,7 +63,7 @@ const Admindash = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:3000/api/admin/dashboard",
+          "https://hospital-management-system-bice.vercel.app/api/admin/dashboard",
           {
             method: "GET",
             headers: {
