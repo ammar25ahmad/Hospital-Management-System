@@ -1,11 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 // Page Imports
-import Home from "./pages/Home";
 import Admin from "./pages/Admin"; // Assuming this is your main Admin dashboard/layout
 import AdminLogin from "./pages/AdminLogin";
 
@@ -22,8 +20,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/" element={<AdminLogin />} />
 
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin" element={<Admin />}>

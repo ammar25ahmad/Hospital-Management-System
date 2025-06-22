@@ -8,7 +8,7 @@ const AdminProtectedRoute = () => {
 
     if (!token) {
         // If no token, redirect to the admin login page
-        return <Navigate to="/admin-login" replace />; // Ensure '/admin-login' is your login route
+        return <Navigate to="/" replace />; // Ensure '/admin-login' is your login route
     }
 
     try {
@@ -18,12 +18,12 @@ const AdminProtectedRoute = () => {
         if (decoded.exp < currentTime) {
             // Token expired
             localStorage.removeItem('adminToken');
-            return <Navigate to="/admin-login" replace />;
+            return <Navigate to="/" replace />;
         }
     } catch (error) {
         // Invalid token format or decode error
         localStorage.removeItem('adminToken');
-        return <Navigate to="/admin-login" replace />;
+        return <Navigate to="/" replace />;
     }
 
     // If token exists and is valid, render the child components (the protected page)
