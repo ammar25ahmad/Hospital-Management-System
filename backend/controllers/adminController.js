@@ -104,8 +104,20 @@ const registerAdmin = async (req, res) => {
     }
 };
 
+const updateAdmin = async(req, res) => {
+    const {adminEmail, currentPassword, newPassword} = req.body
+    const admin = await Admin.findOne({email: adminEmail})
+    if(currentPassword ==  admin.password){
+        admin.password = newPassword
+        await admin.save()
+        res.json({message: 'Admin password updated successfully.'})
+    }
+}
+
+
 module.exports = {
     loginAdmin,
     getAdminDashboard,
     registerAdmin,
+    updateAdmin
 };

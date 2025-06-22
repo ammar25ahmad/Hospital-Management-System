@@ -56,7 +56,7 @@ const Admindash = () => {
     const fetchDashboardData = async () => {
       const token = localStorage.getItem("adminToken");
       if (!token) {
-        setError("No token found. Please login.");
+        setError("No token found. Ple ase login.");
         // navigate('/admin/login'); // Optionally redirect to login
         return;
       }

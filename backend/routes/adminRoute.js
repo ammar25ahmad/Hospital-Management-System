@@ -9,4 +9,6 @@ router.get('/dashboard', verifyAdminToken, adminController.getAdminDashboard);
 
 router.post('/register', adminController.registerAdmin);
 
+router.post('/change-password', adminController.updateAdmin)
+
 module.exports = router;

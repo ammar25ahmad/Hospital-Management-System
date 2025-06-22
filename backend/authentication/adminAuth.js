@@ -8,6 +8,7 @@ const verifyAdminToken = (req, res, next) => {
   // Get the authorization header from the request
   const authHeader = req.headers.authorization;
 
+  
   // Check if the authorization header exists
   if (authHeader) {
     // Extract the token from the authorization header
