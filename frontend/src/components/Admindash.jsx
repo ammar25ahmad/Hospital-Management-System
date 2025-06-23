@@ -56,7 +56,7 @@ const Admindash = () => {
     const fetchDashboardData = async () => {
       const token = localStorage.getItem("adminToken");
       if (!token) {
-        setError("No token found. Ple ase login.");
+        setError("No token found. Please login.");
         // navigate('/admin/login'); // Optionally redirect to login
         return;
       }
@@ -90,7 +90,7 @@ const Admindash = () => {
             // Token might be invalid or expired
             localStorage.removeItem("adminToken");
             localStorage.removeItem("adminUser");
-            // navigate('/admin/login'); // Redirect to login
+            navigate('/'); // Redirect to login
           }
         }
       } catch (err) {
